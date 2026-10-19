@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -8,6 +8,7 @@
 <meta name="description" content="Psicóloga infantojuvenil em Sarandi-PR: terapia para crianças e adolescentes, orientação aos pais e avaliação psicológica. Presencial no Centro e online. Agende pelo WhatsApp.">
 <meta name="author" content="Julia Soares">
 <meta name="theme-color" content="#2D5A55">
+<link rel="apple-touch-icon" href="img/icone-180.png">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232D5A55'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' fill='white' text-anchor='middle'%3EJ%3C/text%3E%3C/svg%3E">
 <!-- Compartilhamento (WhatsApp, Instagram, Facebook) -->
@@ -145,7 +146,8 @@ header.rolou{border-color:var(--linha);box-shadow:0 6px 20px -16px rgba(30,43,42
 .status{position:absolute;z-index:2;right:-10px;top:34px;background:var(--papel);border-radius:999px;padding:8px 14px;box-shadow:var(--sombra);font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:8px}
 .status i{width:9px;height:9px;border-radius:50%;background:#9AA5A2}
 .status.aberto i{background:#2FA36B;box-shadow:0 0 0 4px rgba(47,163,107,.18)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.retrato{order:-1;width:min(84%,360px);margin-bottom:12px}.selo-flutuante{left:-8px}.status{right:-6px}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.retrato{order:-1;width:min(84%,360px);margin-bottom:12px}.selo-flutuante{display:none}.status{right:50%;translate:50% 0;top:auto;bottom:-14px;white-space:nowrap}}
+@media(max-width:560px){.credencial{font-size:.8rem;gap:8px;padding:6px 14px 6px 6px}.hero h1{font-size:clamp(2.2rem,10vw,2.6rem)}}
 
 /* Cartões genéricos */
 .grade{display:grid;gap:18px}
@@ -178,6 +180,7 @@ header.rolou{border-color:var(--linha);box-shadow:0 6px 20px -16px rgba(30,43,42
 .sobre{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:center}
 .sobre-foto{position:relative;aspect-ratio:560/841;width:100%;max-width:460px;justify-self:center}
 .sobre-texto{min-width:0}
+.registro svg{width:18px;height:18px;flex:none}
 .registro{display:inline-flex;gap:8px;align-items:center;margin:16px 0 22px;font-weight:700;font-size:.9rem;color:var(--sage);background:var(--papel);border:1px solid var(--linha);padding:8px 14px;border-radius:10px}
 .sobre-texto>p{color:var(--suave);font-size:1.06rem}
 .checks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
@@ -191,7 +194,7 @@ header.rolou{border-color:var(--linha);box-shadow:0 6px 20px -16px rgba(30,43,42
 .passos .titulo{color:#fff}
 .passos .sub{color:rgba(255,255,255,.78)}
 .passos .rotulo{color:#CFE3DE}
-.linha-tempo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:passo;position:relative}
+.linha-tempo{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:passo;position:relative}
 .passo{position:relative;padding-top:64px}
 .passo::before{counter-increment:passo;content:counter(passo);position:absolute;top:0;left:0;width:46px;height:46px;border-radius:50%;background:var(--sol);color:var(--sage-escuro);display:grid;place-items:center;font:500 1.35rem var(--f-display)}
 .passo::after{content:"";position:absolute;top:23px;left:58px;right:-16px;height:2px;background:rgba(255,255,255,.22)}
@@ -238,6 +241,7 @@ header.rolou{border-color:var(--linha);box-shadow:0 6px 20px -16px rgba(30,43,42
 
 /* Avaliações */
 .av-cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
+.av-lado{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .nota{display:flex;align-items:center;gap:16px;background:var(--papel);border:1px solid var(--linha);border-radius:18px;padding:14px 22px}
 .nota strong{font:500 2.6rem/1 var(--f-display)}
 .nota small{display:block;color:var(--suave);font-size:.85rem}
@@ -257,6 +261,7 @@ header.rolou{border-color:var(--linha);box-shadow:0 6px 20px -16px rgba(30,43,42
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.faq .btn{margin-top:24px}
 .faq-lista{display:grid;gap:12px;min-width:0}
 details{background:var(--papel);border:1px solid var(--linha);border-radius:16px;overflow:hidden;transition:border-color .2s}
 details[open]{border-color:var(--sage)}
@@ -327,7 +332,7 @@ details[open] summary::after{transform:rotate(45deg)}
 .ambiente{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
 .bolha{position:absolute;will-change:transform}
 .b1{width:360px;height:360px;background:var(--lavanda-clara);opacity:.7;left:-140px;top:10%;animation:flutua 18s ease-in-out infinite}
-.b2{width:200px;height:200px;background:#F8EEDA;right:4%;bottom:-60px;animation:flutua 15s ease-in-out infinite reverse}
+.b2{width:200px;height:200px;background:#F8EEDA;right:2%;bottom:8%;animation:flutua 15s ease-in-out infinite reverse}
 .b3{width:110px;height:110px;background:var(--faixa);right:40%;top:6%;animation:flutua 12s ease-in-out infinite}
 .forma{position:absolute;animation:deriva 9s ease-in-out infinite}
 .forma svg{display:block;width:100%;height:auto}
@@ -340,12 +345,12 @@ details[open] summary::after{transform:rotate(45deg)}
 .retrato-forma{animation:morfa 14s ease-in-out infinite}
 .retrato{transform:translate3d(0,calc(var(--rolagem,0) * -0.07px),0)}
 .hero-texto{transform:translate3d(0,calc(var(--rolagem,0) * 0.05px),0)}
-@media(max-width:900px){.b1{width:240px;height:240px;left:-110px}.f-sol{left:auto;right:8%;bottom:4%}.f-estrela{right:10%;top:4%}}
+@media(max-width:900px){.b2{display:none}.b1{width:240px;height:240px;left:-110px}.f-sol{left:auto;right:8%;bottom:4%}.f-estrela{right:10%;top:4%}}
 
 @supports (animation-timeline: view()){
   .cab,.card,.fase,.servico,.dica,.levar,.sobre-foto,.sobre-texto,.passo,.faq-lista details,.info,.mapa,.cta .caixa,.balao-palco{
     animation:revela linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
-  @keyframes revela{from{opacity:.2;translate:0 36px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+  @keyframes revela{from{translate:0 40px;scale:.985}to{translate:0 0;scale:1}}
   .caminho path{animation:desenha linear both;animation-timeline:view();animation-range:entry 30% cover 45%}
   @keyframes desenha{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 }
@@ -378,6 +383,27 @@ details[open] summary::after{transform:rotate(45deg)}
   .sobre-painel{animation:painel linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
   @keyframes painel{from{scale:.9;rotate:-3deg}to{scale:1;rotate:0deg}}
 }
+
+/* Conforto: seções coloridas com bordas em onda (máscara), textura de papel, traço à mão */
+.faixa,.passos,.respira{
+  --onda-topo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 24C220 4 470 2 720 18s520 20 720 0V40H0Z'/%3E%3C/svg%3E");
+  --onda-base:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1440v18c-230 22-470 20-720 6S210 2 0 20Z'/%3E%3C/svg%3E");
+  --corpo:linear-gradient(#000,#000);
+  -webkit-mask:var(--onda-topo) top/100% 36px no-repeat,var(--corpo) center/100% calc(100% - 70px) no-repeat,var(--onda-base) bottom/100% 36px no-repeat;
+          mask:var(--onda-topo) top/100% 36px no-repeat,var(--corpo) center/100% calc(100% - 70px) no-repeat,var(--onda-base) bottom/100% 36px no-repeat}
+.rodape{
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 20C260 0 520 4 760 20s470 18 680 2V40H0Z'/%3E%3C/svg%3E") top/100% 36px no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - 35px) no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 20C260 0 520 4 760 20s470 18 680 2V40H0Z'/%3E%3C/svg%3E") top/100% 36px no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - 35px) no-repeat;
+  padding-top:76px}
+html::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.17 0 0 0 0 0.16 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sublinha{position:relative;display:inline-block;white-space:nowrap}
+.sublinha svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.36em;overflow:visible}
+.sublinha path{fill:none;stroke:var(--sol);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;animation:traco 1.3s .7s cubic-bezier(.6,.1,.3,1) both}
+@keyframes traco{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.carrossel{-webkit-mask:linear-gradient(90deg,#000 0,#000 calc(100% - 64px),transparent);mask:linear-gradient(90deg,#000 0,#000 calc(100% - 64px),transparent)}
+.fase{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.fase:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
 
 /* Caminho entre as fases */
 .jornada{position:relative}
@@ -436,7 +462,7 @@ details[open] summary::after{transform:rotate(45deg)}
       <a class="btn btn-principal js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
     </nav>
     <a class="btn btn-principal btn-topo js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener">Agendar</a>
-    <button class="abrir-menu" id="abrir-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <button class="abrir-menu" id="abrir-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
   </div>
 </header>
 
@@ -451,7 +477,7 @@ details[open] summary::after{transform:rotate(45deg)}
     <div class="wrap hero-grid">
       <div class="hero-texto anima">
         <div class="credencial"><b>Infantojuvenil</b>Presencial em Sarandi e online</div>
-        <h1>Cuidar das emoções na <em>infância</em> é cuidar do futuro.</h1>
+        <h1>Cuidar das emoções na <em class="sublinha">infância<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9c40-6 92-8 140-5 18 1 36 3 54 6"/></svg></em> é cuidar do futuro.</h1>
         <p class="lead">Um espaço acolhedor para crianças e adolescentes se expressarem no seu tempo, com orientação próxima às famílias em cada etapa.</p>
         <div class="acoes">
           <a class="btn btn-principal js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6 0l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z"/></svg>Agendar primeira conversa</a>
@@ -556,7 +582,7 @@ details[open] summary::after{transform:rotate(45deg)}
       <div class="sobre-texto">
         <span class="rotulo">Sobre</span>
         <h2 class="titulo">Julia Soares</h2>
-        <span class="registro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>Psicóloga · CRP 08/44321</span>
+        <span class="registro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>Psicóloga · CRP 08/44321</span>
         <p>Sou psicóloga com atuação voltada para crianças e adolescentes, em Sarandi e também online. Meu trabalho é oferecer um espaço seguro, onde a criança possa se expressar no seu tempo, e caminhar junto com a família em cada etapa do acompanhamento.</p>
         <ul class="checks">
           <li>Atendimento ético e sigiloso, conforme o Código de Ética do Psicólogo</li>
@@ -574,7 +600,7 @@ details[open] summary::after{transform:rotate(45deg)}
         <h2 class="titulo">Como começar o acompanhamento</h2>
         <p class="sub">Um passo de cada vez, com calma.</p>
       </div>
-      <ol class="linha-tempo" style="list-style:none;padding:0;margin:0">
+      <ol class="linha-tempo">
         <li class="passo"><h3>Mande uma mensagem</h3><p>Conte um pouco sobre o que está acontecendo e combine o melhor horário.</p></li>
         <li class="passo"><h3>Conversa com os pais</h3><p>No primeiro encontro conversamos sobre a história e as necessidades da criança.</p></li>
         <li class="passo"><h3>Acompanhamento</h3><p>Sessões regulares com a criança ou o adolescente e retornos com a família.</p></li>
@@ -625,7 +651,7 @@ details[open] summary::after{transform:rotate(45deg)}
       </div>
       <div class="balao-palco" id="balao-palco">
         <span class="balao-anel" aria-hidden="true"></span>
-        <div class="balao" id="balao"><span id="balao-texto">Pronto?</span></div>
+        <div class="balao" id="balao"><span id="balao-texto" aria-live="polite">Pronto?</span></div>
       </div>
     </div>
   </section>
@@ -653,13 +679,13 @@ details[open] summary::after{transform:rotate(45deg)}
           <span class="rotulo">Avaliações</span>
           <h2 class="titulo">O que dizem no Google</h2>
         </div>
-        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div class="av-lado">
           <div class="nota"><strong>5,0</strong><div><span class="estrelas" aria-hidden="true">★★★★★</span><small>34 avaliações no Google</small></div></div>
-          <div class="controles"><button class="seta" id="ant" aria-label="Avaliação anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="seta" id="prox" aria-label="Próxima avaliação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+          <div class="controles"><button class="seta" id="ant" type="button" aria-label="Avaliação anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="seta" id="prox" type="button" aria-label="Próxima avaliação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
         </div>
       </div>
       <div class="carrossel" id="carrossel" tabindex="0" aria-label="Avaliações do Google">
-        <article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Ótima profissional, trabalho excelente. Muito esclarecedora, meu filho sente muita segurança em todos os atendimentos.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Uma psicóloga muito atenciosa, dedicada e humana, que realmente se preocupa com seus pacientes e faz a gente se sentir acolhido e compreendido. Seu trabalho faz a diferença na vida das pessoas.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Uma excelente profissional! Tem um jeito especial em se conectar com as crianças. Super recomendo!”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Me explicou de forma simples e clara o atendimento com meu filho. Resumindo, fiquei satisfeito. E indico sem receio.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Nota 11... não tenho o que falar, é uma ótima profissional, ajudou muito meu filho.”</blockquote><footer>Avaliação verificada no Google</footer></article>
+        <article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" role="img" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Ótima profissional, trabalho excelente. Muito esclarecedora, meu filho sente muita segurança em todos os atendimentos.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" role="img" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Uma psicóloga muito atenciosa, dedicada e humana, que realmente se preocupa com seus pacientes e faz a gente se sentir acolhido e compreendido. Seu trabalho faz a diferença na vida das pessoas.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" role="img" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Uma excelente profissional! Tem um jeito especial em se conectar com as crianças. Super recomendo!”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" role="img" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Me explicou de forma simples e clara o atendimento com meu filho. Resumindo, fiquei satisfeito. E indico sem receio.”</blockquote><footer>Avaliação verificada no Google</footer></article><article class="avaliacao"><div class="avaliacao-topo"><span class="estrelas" role="img" aria-label="5 de 5 estrelas">★★★★★</span><svg viewBox="0 0 24 24" width="20" height="20" aria-label="Google" role="img"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8Z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8Z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4Z"/></svg></div><blockquote>“Nota 11... não tenho o que falar, é uma ótima profissional, ajudou muito meu filho.”</blockquote><footer>Avaliação verificada no Google</footer></article>
       </div>
     </div>
   </section>
@@ -670,7 +696,7 @@ details[open] summary::after{transform:rotate(45deg)}
         <span class="rotulo">Dúvidas frequentes</span>
         <h2 class="titulo">Dúvidas dos pais</h2>
         <p class="sub">Não encontrou sua dúvida? Mande uma mensagem que eu respondo.</p>
-        <a class="btn btn-contorno js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener" style="margin-top:24px">Tirar uma dúvida</a>
+        <a class="btn btn-contorno js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener">Tirar uma dúvida</a>
       </div>
       <div class="faq-lista">
         <details open><summary>A partir de que idade a criança pode fazer terapia?</summary><div class="resposta">Crianças pequenas também podem ser acompanhadas. Na primeira conversa avaliamos juntos se e como o atendimento é indicado.</div></details>
@@ -756,13 +782,17 @@ details[open] summary::after{transform:rotate(45deg)}
   document.addEventListener("keydown", e => { if (e.key === "Escape") fechar(); });
 
   // Destaca no menu a seção visível
+  // (observa todas as seções: nas que não estão no menu, nenhum item fica marcado)
   const links = [...menu.querySelectorAll('a[href^="#"]')];
-  const secoes = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
   if ("IntersectionObserver" in window) {
     const obs = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) links.forEach(a => a.classList.toggle("ativo", a.getAttribute("href") === "#" + e.target.id));
+      if (e.isIntersecting) links.forEach(a => {
+        const ativo = a.getAttribute("href") === "#" + e.target.id;
+        a.classList.toggle("ativo", ativo);
+        if (ativo) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
     }), {rootMargin: "-45% 0px -50% 0px"});
-    secoes.forEach(s => obs.observe(s));
+    document.querySelectorAll("main > section").forEach(s => obs.observe(s));
   }
 
   // Status de atendimento pelo horário de Brasília
@@ -774,7 +804,7 @@ details[open] summary::after{transform:rotate(45deg)}
     const aberto = util && hora >= 8 && hora < 18;
     const st = document.getElementById("status");
     st.classList.toggle("aberto", aberto);
-    st.querySelector("span").textContent = aberto ? "Atendendo agora · até 18h" : "Agende pelo WhatsApp";
+    st.querySelector("span").textContent = aberto ? "Em horário de atendimento" : "Agende pelo WhatsApp";
   } catch (e) {}
 
   // Carrossel de avaliações
@@ -826,6 +856,7 @@ details[open] summary::after{transform:rotate(45deg)}
     bTxt.textContent = fim ? "Muito bem!" : "Pronto?";
     if (fim) ciclosEl.textContent = "Cinco respirações completas. Como vocês estão se sentindo?";
   };
+  document.addEventListener("visibilitychange", () => { if (document.hidden && respirando) parar(false); });
   const etapa = (i) => {
     if (!respirando) return;
     const [classe, texto, ms] = etapas[i];

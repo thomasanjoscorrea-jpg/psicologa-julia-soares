@@ -319,10 +319,76 @@ details[open] summary::after{transform:rotate(45deg)}
 @media(max-width:560px){.whats-dica{display:none}}
 
 /* Animação de entrada: elementos já visíveis, só deslizam levemente */
-@keyframes surge{from{transform:translateY(14px)}to{transform:none}}
+@keyframes surge{from{translate:0 14px}to{translate:0 0}}
 .anima{animation:surge .8s cubic-bezier(.2,.7,.2,1) both}
 .anima-2{animation-delay:.12s}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== Imersão =====
+   Topo: formas que flutuam devagar, foto com parallax e leve inclinação com o mouse.
+   Rolagem: blocos sobem suavemente ao entrar na tela (só onde o navegador suporta; sem suporte, tudo fica parado e visível). */
+.hero{isolation:isolate}
+.ambiente{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bolha{position:absolute;will-change:transform}
+.b1{width:360px;height:360px;background:var(--lavanda-clara);opacity:.7;left:-140px;top:10%;animation:flutua 18s ease-in-out infinite}
+.b2{width:200px;height:200px;background:#F8EEDA;right:4%;bottom:-60px;animation:flutua 15s ease-in-out infinite reverse}
+.b3{width:110px;height:110px;background:var(--faixa);right:40%;top:6%;animation:flutua 12s ease-in-out infinite}
+.forma{position:absolute;animation:deriva 9s ease-in-out infinite}
+.forma svg{display:block;width:100%;height:auto}
+.f-sol{width:40px;left:44%;bottom:12%;color:var(--sol)}
+.f-folha{width:34px;left:6%;bottom:16%;color:var(--sage);opacity:.35;animation-duration:12s}
+.f-estrela{width:24px;right:46%;top:20%;color:var(--lavanda);opacity:.55;animation-duration:7s}
+@keyframes flutua{0%,100%{transform:translate(0,0) rotate(0) scale(1);border-radius:46% 54% 42% 58%/52% 44% 56% 48%}50%{transform:translate(26px,-20px) rotate(10deg) scale(1.06);border-radius:58% 42% 55% 45%/45% 58% 42% 55%}}
+@keyframes deriva{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(14deg)}}
+@keyframes morfa{0%,100%{border-radius:46% 54% 42% 58%/52% 44% 56% 48%}50%{border-radius:56% 44% 52% 48%/44% 56% 46% 54%}}
+.retrato-forma{animation:morfa 14s ease-in-out infinite}
+.retrato{transform:translate3d(0,calc(var(--rolagem,0) * -0.07px),0)}
+.hero-texto{transform:translate3d(0,calc(var(--rolagem,0) * 0.05px),0)}
+.retrato img{transition:transform .7s cubic-bezier(.2,.7,.2,1);transform:perspective(1000px) rotateY(calc(var(--mx,0) * 5deg)) rotateX(calc(var(--my,0) * -5deg))}
+@media(max-width:900px){.b1{width:240px;height:240px;left:-110px}.f-sol{left:auto;right:8%;bottom:4%}.f-estrela{right:10%;top:4%}}
+
+@supports (animation-timeline: view()){
+  .cab,.card,.fase,.servico,.dica,.levar,.sobre-foto,.sobre-texto,.passo,.faq-lista details,.info,.mapa,.cta .caixa,.balao-palco{
+    animation:revela linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  @keyframes revela{from{opacity:.2;translate:0 36px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+  .caminho path{animation:desenha linear both;animation-timeline:view();animation-range:entry 30% cover 45%}
+  @keyframes desenha{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+}
+
+/* Caminho entre as fases */
+.jornada{position:relative}
+.caminho{display:block;width:100%;height:70px;margin:-8px 0 6px;overflow:visible}
+.caminho path{fill:none;stroke:var(--sage);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;opacity:.5}
+.caminho circle{fill:var(--sol);stroke:var(--papel);stroke-width:3}
+@media(max-width:900px){.caminho{display:none}}
+
+/* Respiração guiada */
+.respira{background:var(--sage-escuro);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.respira::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 78% 50%,rgba(110,95,168,.45),transparent 55%),radial-gradient(circle at 10% 90%,rgba(242,196,103,.18),transparent 40%)}
+.respira-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center}
+.respira-texto{min-width:0}
+.respira .titulo{color:#fff}
+.respira .sub{color:rgba(255,255,255,.78)}
+.respira .rotulo{color:#CFE3DE}
+.respira-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;margin-top:30px}
+.respira .btn-principal{background:var(--sol);color:var(--sage-escuro);box-shadow:0 12px 30px -14px rgba(242,196,103,.9)}
+.respira .btn-principal:hover{background:#F6D184}
+.respira-ciclos{font-weight:600;color:rgba(255,255,255,.8);font-size:.95rem}
+.respira-passos{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.respira-passos span{font-size:.82rem;font-weight:700;letter-spacing:.04em;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75)}
+.balao-palco{position:relative;display:grid;place-items:center;aspect-ratio:1;width:min(100%,400px);justify-self:center}
+.balao-anel{position:absolute;inset:8%;border-radius:50%;border:1.5px dashed rgba(255,255,255,.22)}
+.balao{position:relative;width:52%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:12px;
+  background:radial-gradient(circle at 35% 30%,#fff 0,#E4DEF6 18%,#9C8FD0 70%,#6E5FA8 100%);
+  color:var(--sage-escuro);font:500 clamp(1.1rem,2.6vw,1.45rem)/1.2 var(--f-display);
+  box-shadow:0 0 0 14px rgba(255,255,255,.05),0 30px 80px -20px rgba(110,95,168,.9);
+  transform:scale(.82);transition-property:transform,box-shadow;transition-timing-function:cubic-bezier(.45,.05,.35,1)}
+.balao.inspira,.balao.segura{transform:scale(1.3);box-shadow:0 0 0 26px rgba(255,255,255,.06),0 40px 110px -16px rgba(110,95,168,1)}
+.balao.solta{transform:scale(.82)}
+.balao-palco.ativo .balao-anel{animation:gira 24s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media(max-width:900px){.respira-grid{grid-template-columns:1fr}.balao-palco{width:min(86%,340px);order:-1}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.retrato,.hero-texto,.retrato img{transform:none!important}}
 </style>
 
 </head>
@@ -351,6 +417,12 @@ details[open] summary::after{transform:rotate(45deg)}
 
 <main id="conteudo">
   <section class="hero" id="inicio">
+    <div class="ambiente" aria-hidden="true">
+      <span class="bolha b1"></span><span class="bolha b2"></span><span class="bolha b3"></span>
+      <span class="forma f-sol"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="currentColor"/><g stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 2v5M20 33v5M2 20h5M33 20h5M7.3 7.3l3.5 3.5M29.2 29.2l3.5 3.5M7.3 32.7l3.5-3.5M29.2 10.8l3.5-3.5"/></g></svg></span>
+      <span class="forma f-folha"><svg viewBox="0 0 34 34"><path d="M30 4C14 4 4 12 4 26c0 2 .3 3 .8 4C8 18 16 12 24 10 18 14 12 20 8.6 29.4 24 32 30 18 30 4Z" fill="currentColor"/></svg></span>
+      <span class="forma f-estrela"><svg viewBox="0 0 24 24"><path d="M12 1l2.8 8.2L23 12l-8.2 2.8L12 23l-2.8-8.2L1 12l8.2-2.8Z" fill="currentColor"/></svg></span>
+    </div>
     <div class="wrap hero-grid">
       <div class="hero-texto anima">
         <div class="credencial"><b>Infantojuvenil</b>Presencial em Sarandi e online</div>
@@ -400,6 +472,10 @@ details[open] summary::after{transform:rotate(45deg)}
         <h2 class="titulo">Um jeito de cuidar para cada idade</h2>
         <p class="sub">Crianças e adolescentes se expressam de formas diferentes. Por isso, os recursos e a linguagem do atendimento mudam conforme a fase.</p>
       </div>
+      <div class="jornada">
+      <svg class="caminho" viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" vector-effect="non-scaling-stroke" d="M30 42 C 180 4, 320 66, 500 36 S 800 4, 970 32"/>
+      </svg>
       <div class="fases">
         <article class="fase">
           <div class="fase-idade">Até 6<small>anos · primeira infância</small></div>
@@ -419,6 +495,7 @@ details[open] summary::after{transform:rotate(45deg)}
           <p>O adolescente encontra uma escuta sem julgamentos, com sigilo, para falar de emoções, relações, identidade e projetos.</p>
           <ul><li>Relações</li><li>Identidade</li><li>Pressão e cobranças</li></ul>
         </article>
+      </div>
       </div>
     </div>
   </section>
@@ -501,6 +578,25 @@ details[open] summary::after{transform:rotate(45deg)}
           </ul>
           <a class="btn js-whats" href="https://wa.me/5544997738936?text=Ol%C3%A1%2C%20Julia%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20como%20agendar%20um%20atendimento." target="_blank" rel="noopener">Agendar a primeira conversa</a>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="respira" id="respirar">
+    <div class="wrap respira-grid">
+      <div class="respira-texto">
+        <span class="rotulo">Para fazer em casa</span>
+        <h2 class="titulo">Um minuto para respirar juntos</h2>
+        <p class="sub">Uma brincadeira simples para os momentos de nervosismo. Encha o balão junto com a criança: puxe o ar enquanto ele cresce e solte bem devagar enquanto ele murcha.</p>
+        <div class="respira-passos" aria-hidden="true"><span>Inspire 4s</span><span>Segure 2s</span><span>Solte 6s</span></div>
+        <div class="respira-acoes">
+          <button class="btn btn-principal" id="respira-btn" type="button" aria-pressed="false">Começar a respirar</button>
+          <span class="respira-ciclos" id="respira-ciclos" aria-live="polite">Cinco respirações já ajudam.</span>
+        </div>
+      </div>
+      <div class="balao-palco" id="balao-palco">
+        <span class="balao-anel" aria-hidden="true"></span>
+        <div class="balao" id="balao"><span id="balao-texto">Pronto?</span></div>
       </div>
     </div>
   </section>
@@ -593,7 +689,7 @@ details[open] summary::after{transform:rotate(45deg)}
 <footer class="rodape">
   <div class="wrap rodape-grid">
     <div><strong>Julia Soares</strong><br>Psicóloga · CRP 08/44321<br>Psicologia infantojuvenil em Sarandi-PR e online</div>
-    <nav class="rodape-links" aria-label="Links do rodapé"><a href="#atendimentos">Atendimentos</a><a href="#pais">Para pais</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></nav>
+    <nav class="rodape-links" aria-label="Links do rodapé"><a href="#atendimentos">Atendimentos</a><a href="#pais">Para pais</a><a href="#respirar">Respirar juntos</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></nav>
   </div>
   <div class="wrap"><div class="rodape-base">
     <span>Praça Ipiranga, 271 – Centro, Sarandi-PR · © <span id="ano">2026</span></span>
@@ -666,6 +762,61 @@ details[open] summary::after{transform:rotate(45deg)}
     const ok = () => { copiar.textContent = "Copiado"; setTimeout(() => copiar.textContent = "Copiar", 1800); };
     const selecionar = () => { const r = document.createRange(); r.selectNodeContents(fone); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copiar.textContent = "Selecionado"; };
     if (navigator.clipboard) navigator.clipboard.writeText("(44) 99773-8936").then(ok, selecionar); else selecionar();
+  });
+
+  // Imersão no topo: parallax ao rolar e leve inclinação da foto com o mouse
+  const hero = document.getElementById("inicio");
+  const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!calmo) {
+    let quadro = 0;
+    addEventListener("scroll", () => {
+      cancelAnimationFrame(quadro);
+      quadro = requestAnimationFrame(() => hero.style.setProperty("--rolagem", Math.min(scrollY, 900)));
+    }, {passive:true});
+    if (matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width - .5).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height - .5).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", 0); hero.style.setProperty("--my", 0); });
+    }
+  }
+
+  // Respiração guiada: inspira 4s, segura 2s, solta 6s, cinco vezes
+  const rBtn = document.getElementById("respira-btn"), balao = document.getElementById("balao"),
+        bTxt = document.getElementById("balao-texto"), ciclosEl = document.getElementById("respira-ciclos"),
+        palco = document.getElementById("balao-palco");
+  const etapas = [["inspira","Puxe o ar…",4000],["segura","Segure",2000],["solta","Solte devagar…",6000]];
+  let respirando = false, relogio = null, feitas = 0;
+  const parar = (fim) => {
+    respirando = false; clearTimeout(relogio);
+    balao.className = "balao"; balao.style.transitionDuration = "1200ms";
+    palco.classList.remove("ativo");
+    rBtn.textContent = fim ? "Respirar de novo" : "Começar a respirar"; rBtn.setAttribute("aria-pressed","false");
+    bTxt.textContent = fim ? "Muito bem!" : "Pronto?";
+    if (fim) ciclosEl.textContent = "Cinco respirações completas. Como vocês estão se sentindo?";
+  };
+  const etapa = (i) => {
+    if (!respirando) return;
+    const [classe, texto, ms] = etapas[i];
+    balao.style.transitionDuration = ms + "ms";
+    balao.className = "balao " + classe; bTxt.textContent = texto;
+    relogio = setTimeout(() => {
+      if (i === 2) {
+        feitas++;
+        ciclosEl.textContent = feitas + (feitas === 1 ? " respiração" : " respirações") + " de 5";
+        if (feitas >= 5) return parar(true);
+      }
+      etapa((i + 1) % 3);
+    }, ms);
+  };
+  rBtn.addEventListener("click", () => {
+    if (respirando) return parar(false);
+    respirando = true; feitas = 0; palco.classList.add("ativo");
+    rBtn.textContent = "Parar"; rBtn.setAttribute("aria-pressed","true");
+    ciclosEl.textContent = "0 respirações de 5";
+    etapa(0);
   });
 
   // Dica do WhatsApp aparece depois de alguns segundos
